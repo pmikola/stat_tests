@@ -96,3 +96,25 @@ print(f'MRE: {max_relative_error:.4f}%')
 print(f'MRE_half: {max_relative_error/2:.4f}%')
 
 plt.show()
+
+# Konfiguracja wykresu
+fig, ax = plt.subplots(figsize=(8, 6))
+boxprops = dict(linestyle='-', linewidth=2, color='blue')
+whiskerprops = dict(linestyle='--', linewidth=1, color='gray')
+medianprops = dict(linestyle='-', linewidth=2, color='red')
+capprops = dict(linestyle='-', linewidth=1, color='black')
+
+# Tworzenie wykresu pudełkowego
+boxes = ax.boxplot([dataset1, dataset2], labels=['FIMMWAVE', 'FDTD'], boxprops=boxprops, whiskerprops=whiskerprops,
+                   medianprops=medianprops, capprops=capprops, patch_artist=True)
+
+# Dodanie kolorów do pudełek
+colors = ['lightblue', 'lightgreen']
+for box, color in zip(boxes['boxes'], colors):
+    box.set_facecolor(color)
+
+# Etykiety na osiach
+ax.set_ylabel('Pfwd')
+
+plt.grid()
+plt.show()
