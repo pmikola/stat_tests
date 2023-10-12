@@ -183,12 +183,13 @@ print(f'Wartość statystyki korelacji Kendall Tau: {corr:.4f}')
 
 
 alpha = 0.05  # Poziom istotności w procentach %
-if p_value < alpha and ks_p_value < alpha:
+print("Wartości testów: T-studenta:", p_value,"KS : ",ks_p_value,"Dla poziomu istotności (dopuszcalnego poziomu popełnienia błędu) :",alpha)
+if p_value < alpha or ks_p_value > alpha:
     print("Odrzucamy hipotezę zerową - Istnieje różnica między rozkładami.")
 else:
     print("Nie ma podstaw do odrzucenia hipotezy zerowej - Brak różnicy między rozkładami.")
 
-if p_non_lin < 0.05:
+if p_non_lin < alpha :
     print('Istnieje istotna nieliniowa zależność między danymi.')
 else:
     print('Brak istotnej nieliniowej zależności między danymi.')
